@@ -6,7 +6,7 @@ import Jwt from "jsonwebtoken";
 // Post a secret
 const PostSecret= asyncHandler( async (req, res) => {
   try {
-    const { content } = req.body;
+    const { content, title } = req.body;
    
     const token =
       req.headers.authorization &&
@@ -27,7 +27,7 @@ const PostSecret= asyncHandler( async (req, res) => {
         .json({ message: "One User Can Post Only One Post" });
     }
 
-    const newSecret = new Secret({ content, userId });
+    const newSecret = new Secret({ content, userId, title });
     await newSecret.save();
 
     res.status(201).json({ 

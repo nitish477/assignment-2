@@ -106,7 +106,7 @@ function Home() {
           fontSize={{ base: "28px", md: "30px" }}
         ></Box>
         <Box
-          display={"flex"}
+          display={""}
           bg={"wheat"}
           p={3}
           h={"80vh"}
@@ -117,7 +117,7 @@ function Home() {
         >
           <Modal>
             <Button
-              display={"block"}
+              display={""}
               fontSize={{ base: "17px", md: "10px", lg: "17px" }}
               mt={3}
               rightIcon={<AddIcon />}
@@ -129,7 +129,8 @@ function Home() {
            
             {post?.map((post) => {
               return (
-                <div className="card">
+                <div className="card" key={post._id}>
+                      <b>{post?.title}</b>
                   <p>{post.content}</p>
                 </div>
               );

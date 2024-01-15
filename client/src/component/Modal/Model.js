@@ -17,6 +17,7 @@ import {
 import axios from 'axios';
 function Model({children}) {
    const [content,setContent]=useState('')
+   const [title, setTitle] = useState("");
    const { isOpen, onOpen, onClose } = useDisclosure();
    const toast= useToast()
 
@@ -41,7 +42,7 @@ function Model({children}) {
           Authorization: `Bearer ${token}`,
         },
       };
-      const responce = await axios.post("api/v1/secrets", { content },config);
+      const responce = await axios.post("api/v1/secrets", { content,title },config);
       alert(responce?.data?.message)
       if(responce?.data?.success){
        toast({
@@ -52,6 +53,8 @@ function Model({children}) {
          position: "bottom",
        });
        setContent('');
+       setTitle('')
+       onClose()
        window.location.reload()
       }
      
@@ -82,14 +85,22 @@ function Model({children}) {
           >
             <FormControl>
               <Input
-                placeholder="Secret Message"
+                placeholder="Message Title"
                 mb={3}
                 onChange={(e) => {
-                  setContent(e.target.value)
+                  setTitle(e.target.value);
                 }}
               />
             </FormControl>
-           
+            <FormControl>
+              <Input
+                placeholder="Secret Message"
+                mb={3}
+                onChange={(e) => {
+                  setContent(e.target.value);
+                }}
+              />
+            </FormControl>
           </ModalBody>
 
           <ModalFooter>

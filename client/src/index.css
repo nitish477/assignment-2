@@ -33,7 +33,6 @@ code {
 .contanier{
   display: flex;
   margin: 70px 0px;
-   justify-content: space-around;
    flex-wrap: wrap;
 
 }
