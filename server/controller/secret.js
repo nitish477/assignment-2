@@ -24,14 +24,16 @@ const PostSecret= asyncHandler( async (req, res) => {
 
     if (existingSecret) {
       return res
-        .status(400)
         .json({ message: "One User Can Post Only One Post" });
     }
 
     const newSecret = new Secret({ content, userId });
     await newSecret.save();
 
-    res.status(201).json({ message: "Secret posted successfully" });
+    res.status(201).json({ 
+      success:true,
+      message: "Secret posted successfully" 
+    });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }

@@ -21,3 +21,19 @@ code {
 ::-webkit-scrollbar{
   width: 0;
 }
+.card{
+  background-color:white;
+  height: 100px;
+  width: 150px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+  overflow: scroll;
+}
+.contanier{
+  display: flex;
+  margin: 70px 0px;
+   justify-content: space-around;
+   flex-wrap: wrap;
+
+}

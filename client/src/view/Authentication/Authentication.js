@@ -24,7 +24,7 @@ function Authentication() {
             fontFamily={` font-family: 'Poppins', sans-serif'`}
             color={"black"}
           >
-            Messanger
+            Share Secret
           </Text>
         </Box>
         <Box

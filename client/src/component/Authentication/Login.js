@@ -7,7 +7,7 @@ import {
   InputRightElement,
   VStack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,13 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+
+    useEffect(() => {
+      const getUser = JSON.parse(localStorage.getItem("user") || "{}");
+      if (getUser.email) {
+        window.location.href = "/";
+      }
+    }, []);
 
   const Login = async () => {
     setLoading(true);
